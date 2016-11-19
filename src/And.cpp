@@ -1,3 +1,5 @@
+// And.cpp implements the And class
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -14,12 +16,15 @@ using namespace std;
 
 And::And(){}
 
+// The base class is the Execution class, And takes two objects of its type.
 And::And(Execution *firstCmd, Execution *secondCmd)
 {
     leftCmd = firstCmd;
     rightCmd = secondCmd;
 }
 
+// The And execute determines whether to run the right command depending on the
+// value of the left commands status after its execution.
 void And::execute()
 {
     leftCmd->execute();
@@ -41,6 +46,7 @@ void And::execute()
     }
 }
 
+// This gives the status of the whole And object after execution
 int And::cmdStatus()
 {
     return status;
