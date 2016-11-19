@@ -1,6 +1,6 @@
 Introduction:
 
-This project is a basic r shell that lets us emulate the terminal and lets us type commands where they will be tested according to their connector which can be ;, && or ||. These commands will execute depending on which connector is typed before them.
+This project is a basic r shell that lets us emulate the terminal and lets us type commands where they will be tested according to their connector which can be ;, && or ||. Also allows for the use of parantheses, and has a special built in implementation of the test command. These commands will execute depending on which connector is typed before them.
 
 Features:
 
