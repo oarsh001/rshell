@@ -1,3 +1,7 @@
+// The RShell class starts a prompt and asks user for input
+// It removes comments from the user's input and sends them to the
+// RShellInterpreter class.
+
 #include <iostream>
 #include <string>
 #include <stdio.h>
