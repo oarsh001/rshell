@@ -7,6 +7,7 @@
 #include <vector>
 #include "SingleCmd.cpp"
 #include "Connectors.cpp"
+#include "Precedence.cpp"
 #include "RShellInterpreter.h"
 
 using namespace std;
@@ -32,11 +33,14 @@ void RShellInterpreter::interpret()
 
     for (unsigned i = 0; i < cmds.size(); i++)
     {
-        if (string(cmds[i]).find("(") == string::npos)
+        if (string(cmds[i]).find("(") != string::npos 
+        && string(cmds[i]).find(")") != string::npos)
         {
-            cout << "precedence.\n";
+            Precedence* aCommandWithPara = new Precedence(cmds[i]);
+            aCommandWithPara->checkParanthesis();
         }
-        else if (string(cmds[i]).find("&&") == string::npos && string(cmds[i]).find("||") == string::npos)
+        else if (string(cmds[i]).find("&&") == string::npos 
+        && string(cmds[i]).find("||") == string::npos)
         {
             SingleCmd* aCommand = new SingleCmd(cmds[i]);
             aCommand->execute();

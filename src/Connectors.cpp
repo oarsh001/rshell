@@ -59,6 +59,7 @@ void Connectors::execute()
                 And* andCmd = new And(lhs, rhs);
                 andCmd->execute();
                 statusVector.push_back(andCmd->cmdStatus());
+                status = andCmd->cmdStatus();
             }
             else if (connectorsVector[k] == "||")
             {
@@ -67,6 +68,7 @@ void Connectors::execute()
                 Or* orCmd = new Or(lhs, rhs);
                 orCmd->execute();
                 statusVector.push_back(orCmd->cmdStatus());
+                status = orCmd->cmdStatus();
             }
         }
         else
@@ -78,6 +80,7 @@ void Connectors::execute()
                     SingleCmd* nextCmd = new SingleCmd(commandsVector[k+1]);
                     nextCmd->execute();
                     statusVector.push_back(nextCmd->cmdStatus());
+                    status = nextCmd->cmdStatus();
                 }
             }
             else if (connectorsVector[k] == "||")
@@ -87,6 +90,7 @@ void Connectors::execute()
                     SingleCmd* nextCmd = new SingleCmd(commandsVector[k+1]);
                     nextCmd->execute();
                     statusVector.push_back(nextCmd->cmdStatus());
+                    status = nextCmd->cmdStatus();
                 }
             }
         }
@@ -95,6 +99,6 @@ void Connectors::execute()
 
 int Connectors::cmdStatus()
 {
-    return 0;
+    return status;
 }
 

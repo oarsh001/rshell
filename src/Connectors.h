@@ -7,6 +7,7 @@ class Connectors : public Execution
 {
     private:
         char* command;
+        int status;
         vector<char *> commandsVector;
         vector<string> connectorsVector;
         vector<int> statusVector;
