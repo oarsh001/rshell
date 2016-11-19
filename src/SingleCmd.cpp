@@ -1,3 +1,5 @@
+// SingleCmd.cpp provides the implementation for the SingleCmd class
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -13,6 +15,7 @@
 
 using namespace std;
 
+// The constructor takes a single char* user input and initializes it
 SingleCmd::SingleCmd(){}
 
 SingleCmd::SingleCmd(char* userCommand)
@@ -20,6 +23,9 @@ SingleCmd::SingleCmd(char* userCommand)
     command = userCommand;
 }
 
+// This execute function provides the main source of executing for all of the other classes.
+// The char* command is tokenized and sent into a char array, after which it is run through
+// the execvp system call.
 void SingleCmd::execute()
 {
     commandDeconstructed.clear();
@@ -81,6 +87,8 @@ void SingleCmd::execute()
     }
 }
 
+// From the execvp the commands failure or success is piped and stored into status,
+// This function returns the value of that status.
 int SingleCmd::cmdStatus()
 {
     return status;
