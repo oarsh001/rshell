@@ -1,5 +1,11 @@
+// Precedence.cpp makes a solid attempt to tokenize and execute commands that are in 
+// parantheseses.
+
 class Precedence : public Execution
 {
+// There are 3 ints, one is the status of the Precedence, the other two are counters
+// for each type of paranthesis, either right or left.
+// The bools are used throughout as check for the existence of a connector.
 private:
     int status;
     int leftParanthesisCounter;
@@ -10,19 +16,24 @@ private:
     bool connCheck1;
     bool connCheck2;
     bool connCheck3;
-
+    
+// Theres a vector for storing commands, for connectors, for statuses, and
+// one for holding Execution base class objects.
     vector<char*> commandsVector;
     vector<string> connectorsVector;
     vector<int> statusVector;
     vector<Execution*> execVector; 
 
 public:
+// The Precedence constructor takes a users input as a char array.
     Precedence(){};
     Precedence(char* input)
     {
         command = input;
     };
 
+// This function's purpose is to tokenize parantheses commands, by storing
+// the contents that are inside of paranthesis in the appropriate vector.
     void checkParanthesis()
     {   
         int leftParanthesisCounter = 0;  
@@ -31,10 +42,13 @@ public:
         size_t lastRightParanPos = 0;
         string cmdInString = string(command);
 
+// The main for loop, it runs through each letter in the char*, treating it as an array.
         for (unsigned i = 0; i <= cmdInString.length(); i++)
         {   
+// When both parantheses counters are 0, this means the contents are elements not in parantheses.
             if (leftParanthesisCounter == 0 && rightParanthesisCounter == 0)
             {
+// When it finds an && not in parantheses it is added to the connectors vector.            
                 if (command[i] == '&' && command[i+1] == '&')
                 {
                     connectorsVector.push_back("&&");
@@ -48,6 +62,7 @@ public:
                     }
                 }
 
+// When it finds an || not in parantheses it is added to the connectors vector.
                 else if (command[i] == '|' && command [i+1] == '|')
                 {
                     connectorsVector.push_back("||");
@@ -72,6 +87,8 @@ public:
             }
             else if (command[i] == ')')
             {
+// When the counters match and are not zero, the contents within the parantheses are 
+// added to the commands vector            
                 rightParanthesisCounter++;
                 if (leftParanthesisCounter == rightParanthesisCounter)
                 {
@@ -95,14 +112,14 @@ public:
 
                     commandsVector.push_back(tokParCmd);
 
+// The counter is reset and the loop starts again.
                     leftParanthesisCounter = 0;
                     rightParanthesisCounter = 0;
 
                 }
             }
         }
-
-
+        
 /*      string help = string(command).substr(strlen(command)-1);
         cout << help << endl;
         if (help != ")")
@@ -135,6 +152,10 @@ public:
         execute();
     };
 
+// The execute functions purpose is to run the commands stored in the commands vector
+// It also applies the right logic in regards to connectors, meaning which command
+// to execute when determining the appropriate connector.
+// Most of the logic is very similar to the connectors.cpp class implementation
     void execute()
     {
         if (connectorsVector.empty())
