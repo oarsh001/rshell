@@ -1,3 +1,6 @@
+// RShellInterpreter is called by RShell
+// This class determines to which class the users input needs to be send to
+
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -19,6 +22,8 @@ RShellInterpreter::RShellInterpreter(string input)
     fullUserInput = input;
 }
 
+// The interepret class handles the logic of sending the users input,
+// depending on if it contains connectors or parantheses, or is just simple command
 void RShellInterpreter::interpret()
 {
     char* fullUserInputChar = new char[fullUserInput.length() + 1];
