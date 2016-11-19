@@ -1,3 +1,5 @@
+// The Or class is impemented here.
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -12,6 +14,7 @@
 
 using namespace std;
 
+// Two Execution base class inputs are taken and initilizaed in the constructor.
 Or::Or(){}
 
 Or::Or(Execution *firstCmd, Execution *secondCmd)
@@ -20,6 +23,7 @@ Or::Or(Execution *firstCmd, Execution *secondCmd)
     rightCmd = secondCmd;
 }
 
+// Depending on the leftCmd execute's return status, the rightCmd will execute
 void Or::execute()
 {
     leftCmd->execute();
