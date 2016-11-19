@@ -1,3 +1,6 @@
+// Connectors.cpp is the implementation for running commands with 
+// multiple connectors in them, either && or ||
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -14,7 +17,8 @@
 
 using namespace std;
 
-
+// The constructors, one is empty, the other takes a char* argument
+// which is the users input.
 Connectors::Connectors(){}
 
 Connectors::Connectors(char* userCommandWithConn)
@@ -22,6 +26,9 @@ Connectors::Connectors(char* userCommandWithConn)
     command = userCommandWithConn;
 }
 
+
+// Connectors execute determines the logic of multiple && and || in a
+// users input.
 void Connectors::execute()
 {
     string cmdDupString = string(command);
