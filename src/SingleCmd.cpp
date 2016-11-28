@@ -9,6 +9,7 @@
 #include <vector>
 #include <sys/wait.h>
 #include "SingleCmd.h"
+#include "CDCmd.cpp"
 #include "TestCommand.cpp"
 
 using namespace std;
@@ -44,6 +45,14 @@ void SingleCmd::execute()
         TestCmd* aTestCommand = new TestCmd(commandDeconstructed);
         aTestCommand->execute();
         status = aTestCommand->cmdStatus();
+        return;
+    }
+
+    if (string(cmdToRun) == "cd")
+    {
+        CDCmd* cdCommand = new CDCmd(commandDeconstructed);
+        cdCommand->execute();
+        status = cdCommand->cmdStatus();
         return;
     }
 

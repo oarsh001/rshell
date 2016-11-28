@@ -14,7 +14,8 @@ RShell::RShell()
 {
     while(1)
     {
-        cout << getlogin() << "$ ";
+        char* currentDir = getenv("PWD");
+        cout << getlogin() << " " << currentDir << " $ ";
         getline(cin, userInput);
         if (userInput == "exit")
         {

@@ -1,3 +1,5 @@
+// TestCommand.cpp is the implementation file for the test command in rshell.
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -14,6 +16,7 @@
 
 using namespace std;
 
+// These are the constructors, one is empty one takes a vector of char.
 TestCmd::TestCmd(){}
 
 TestCmd::TestCmd(std::vector<char*> inputTestCmd)
@@ -21,10 +24,13 @@ TestCmd::TestCmd(std::vector<char*> inputTestCmd)
     tokenizedTestCmd = inputTestCmd;
 }
 
+// The execute function determines the flag of the user's test command
+// and will use the appropriate macro in determining the result of the test command
 void TestCmd::execute()
 {
     struct stat tcmd;
 
+// testflag is the flag the user uses in the test command.
     string testFlag = tokenizedTestCmd[1];
     if (testFlag == "-e")
     {
@@ -67,12 +73,12 @@ void TestCmd::execute()
         {
             if (S_ISDIR(tcmd.st_mode) == true)
             {
-                cout << "(True)\n";
+                //cout << "(True)\n";
                 status = 0;
             }
             else
             {
-                cout << "(False)\n";
+                //cout << "(False)\n";
                 status = 1;
             }
         }
@@ -82,6 +88,8 @@ void TestCmd::execute()
             status = 1;
         }
     }
+
+// if there is no user input, it uses the implementation of that of an e flag.
     else if (testFlag != "-e" && testFlag != "-f" && testFlag != "-d")
     {
         if (stat(tokenizedTestCmd[1], &tcmd) != -1)
@@ -98,6 +106,7 @@ void TestCmd::execute()
     }
 }
 
+// cmdStatus returns 0 if command succeeded or 1 if it failed.
 int TestCmd::cmdStatus()
 {
     return status;
