@@ -73,12 +73,20 @@ void TestCmd::execute()
         {
             if (S_ISDIR(tcmd.st_mode) == true)
             {
+<<<<<<< HEAD
                 //cout << "(True)\n";
+=======
+                cout << "(True)\n";
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
                 status = 0;
             }
             else
             {
+<<<<<<< HEAD
                 //cout << "(False)\n";
+=======
+                cout << "(False)\n";
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
                 status = 1;
             }
         }

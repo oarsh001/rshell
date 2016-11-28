@@ -1,5 +1,16 @@
+<<<<<<< HEAD
 class Precedence : public Execution
 {
+=======
+// Precedence.cpp makes a solid attempt to tokenize and execute commands that are in 
+// parantheseses.
+
+class Precedence : public Execution
+{
+// There are 3 ints, one is the status of the Precedence, the other two are counters
+// for each type of paranthesis, either right or left.
+// The bools are used throughout as check for the existence of a connector.
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
 private:
     int status;
     int leftParanthesisCounter;
@@ -10,19 +21,34 @@ private:
     bool connCheck1;
     bool connCheck2;
     bool connCheck3;
+<<<<<<< HEAD
 
+=======
+    
+// Theres a vector for storing commands, for connectors, for statuses, and
+// one for holding Execution base class objects.
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
     vector<char*> commandsVector;
     vector<string> connectorsVector;
     vector<int> statusVector;
     vector<Execution*> execVector; 
 
 public:
+<<<<<<< HEAD
+=======
+// The Precedence constructor takes a users input as a char array.
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
     Precedence(){};
     Precedence(char* input)
     {
         command = input;
     };
 
+<<<<<<< HEAD
+=======
+// This function's purpose is to tokenize parantheses commands, by storing
+// the contents that are inside of paranthesis in the appropriate vector.
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
     void checkParanthesis()
     {   
         int leftParanthesisCounter = 0;  
@@ -31,10 +57,20 @@ public:
         size_t lastRightParanPos = 0;
         string cmdInString = string(command);
 
+<<<<<<< HEAD
         for (unsigned i = 0; i <= cmdInString.length(); i++)
         {   
             if (leftParanthesisCounter == 0 && rightParanthesisCounter == 0)
             {
+=======
+// The main for loop, it runs through each letter in the char*, treating it as an array.
+        for (unsigned i = 0; i <= cmdInString.length(); i++)
+        {   
+// When both parantheses counters are 0, this means the contents are elements not in parantheses.
+            if (leftParanthesisCounter == 0 && rightParanthesisCounter == 0)
+            {
+// When it finds an && not in parantheses it is added to the connectors vector.            
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
                 if (command[i] == '&' && command[i+1] == '&')
                 {
                     connectorsVector.push_back("&&");
@@ -48,6 +84,10 @@ public:
                     }
                 }
 
+<<<<<<< HEAD
+=======
+// When it finds an || not in parantheses it is added to the connectors vector.
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
                 else if (command[i] == '|' && command [i+1] == '|')
                 {
                     connectorsVector.push_back("||");
@@ -72,6 +112,11 @@ public:
             }
             else if (command[i] == ')')
             {
+<<<<<<< HEAD
+=======
+// When the counters match and are not zero, the contents within the parantheses are 
+// added to the commands vector            
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
                 rightParanthesisCounter++;
                 if (leftParanthesisCounter == rightParanthesisCounter)
                 {
@@ -95,14 +140,22 @@ public:
 
                     commandsVector.push_back(tokParCmd);
 
+<<<<<<< HEAD
+=======
+// The counter is reset and the loop starts again.
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
                     leftParanthesisCounter = 0;
                     rightParanthesisCounter = 0;
 
                 }
             }
         }
+<<<<<<< HEAD
 
 
+=======
+        
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
 /*      string help = string(command).substr(strlen(command)-1);
         cout << help << endl;
         if (help != ")")
@@ -135,6 +188,13 @@ public:
         execute();
     };
 
+<<<<<<< HEAD
+=======
+// The execute functions purpose is to run the commands stored in the commands vector
+// It also applies the right logic in regards to connectors, meaning which command
+// to execute when determining the appropriate connector.
+// Most of the logic is very similar to the connectors.cpp class implementation
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
     void execute()
     {
         if (connectorsVector.empty())
@@ -306,4 +366,8 @@ public:
         return status;
     };
 
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4

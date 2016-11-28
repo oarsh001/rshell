@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+// The RShell class starts a prompt and asks user for input
+// It removes comments from the user's input and sends them to the
+// RShellInterpreter class.
+
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
 #include <iostream>
 #include <string>
 #include <stdio.h>
@@ -14,8 +21,12 @@ RShell::RShell()
 {
     while(1)
     {
+<<<<<<< HEAD
         char* currentDir = getenv("PWD");
         cout << getlogin() << " " << currentDir << " $ ";
+=======
+        cout << getlogin() << "$ ";
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
         getline(cin, userInput);
         if (userInput == "exit")
         {
@@ -27,4 +38,8 @@ RShell::RShell()
         RShellInterpreter* shell = new RShellInterpreter(userInputCommentsRemoved);
         shell->interpret();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 56bd62281e3d6e5bd0e649f1ac11460dca9929a4
