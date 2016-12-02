@@ -1,6 +1,6 @@
 Introduction:
 
-This project is a basic r shell that lets us emulate the terminal and lets us type commands where they will be tested according to their connector which can be ;, && or ||. Also allows for the use of parantheses, and has a special built in implementation of the test command. These commands will execute depending on which connector is typed before them.
+This project is a basic r shell that lets us emulate the terminal and lets us type commands where they will be tested according to their connector which can be ;, && or ||. Also allows for the use of parantheses, and has a special built in implementation of the test and cd commands. These commands will execute depending on which connector is typed before them.
 
 Features:
 
@@ -18,6 +18,8 @@ Allows for the use of parantheses to change the order of execution of commands.
 
 Allows for the use of the test command.
 
+Allows for the use of the cd command.
+
 Commands include : || which means it will execute only if the previous command failed && which means it will execute only if the previous command succeeded ; It will execute no matter what happened in the previous command # which means that everything after the sign will be commented
 
 Bugs
@@ -30,3 +32,5 @@ The test command inside parantheses only work in certain parantheses combination
 The ls command will sometimes return as having failed despite running succesfully.
 
 Nested paranthesis are buggy, certain combinations of parantheses will not execute correctly.
+
+The dd and Test commands with parameters/arguments within paranthesis do not execute correctly, only the single cd and test command inside parantheseses work as expected.
