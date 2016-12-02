@@ -33,4 +33,4 @@ The ls command will sometimes return as having failed despite running succesfull
 
 Nested paranthesis are buggy, certain combinations of parantheses will not execute correctly.
 
-The dd and Test commands with parameters/arguments within paranthesis do not execute correctly, only the single cd and test command inside parantheseses work as expected.
+The cd and Test commands with parameters/arguments within paranthesis do not execute correctly, only the single cd and test command inside parantheseses work as expected.
